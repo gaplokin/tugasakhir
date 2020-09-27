@@ -51,61 +51,59 @@ function document($data)
     //             VALUES
     //             ('', '$ektp', '$kk', '$akte', '$pasporlama', '$pernyataan')
     //             ";
-	
-	$tanggal = $data['tanggal'];
-	$shift = $data['shift'];
+
+    $tanggal = $data['tanggal'];
+    $shift = $data['shift'];
     $user_id = $_SESSION['user_id'];
-    
-    $queryCekTanggal = "SELECT * FROM dokumen where tanggal = '".$tanggal."'";
+
+    $queryCekTanggal = "SELECT * FROM dokumen where tanggal = '" . $tanggal . "'";
     $hasilCekTanggal = mysqli_query($conn, $queryCekTanggal);
     $totalRow = mysqli_num_rows($hasilCekTanggal);
 
     if ($totalRow > 8) {
         return "full";
-    }else{
+    } else {
         $resultInsert = mysqli_query($conn, "INSERT INTO dokumen VALUES('', '$user_id', '$tanggal', '$shift', '$ektp', '$kk', '$akte', '$pasporlama', '$pernyataan')");
         return 1;
     }
-
-    
 }
 
 function updoc($tipe)
 {
-	if($tipe == "ektp"){
-		$namaFile = $_FILES['ektp']['name'];
-		$ukuranFile = $_FILES['ektp']['size'];
-		$error = $_FILES['ektp']['error'];
-		$tmpName = $_FILES['ektp']['tmp_name'];
-	}
-    
-	if($tipe == "kk"){
-		$namaFile = $_FILES['kk']['name'];
-		$ukuranFile = $_FILES['kk']['size'];
-		$error = $_FILES['kk']['error'];
-		$tmpName = $_FILES['kk']['tmp_name'];
-	}
-	
-	if($tipe == "akte"){
-		$namaFile = $_FILES['akte']['name'];
-		$ukuranFile = $_FILES['akte']['size'];
-		$error = $_FILES['akte']['error'];
-		$tmpName = $_FILES['akte']['tmp_name'];
-	}
+    if ($tipe == "ektp") {
+        $namaFile = $_FILES['ektp']['name'];
+        $ukuranFile = $_FILES['ektp']['size'];
+        $error = $_FILES['ektp']['error'];
+        $tmpName = $_FILES['ektp']['tmp_name'];
+    }
 
-	if($tipe == "pasporlama"){
-		$namaFile = $_FILES['pasporlama']['name'];
-		$ukuranFile = $_FILES['pasporlama']['size'];
-		$error = $_FILES['pasporlama']['error'];
-		$tmpName = $_FILES['pasporlama']['tmp_name'];
-	}
+    if ($tipe == "kk") {
+        $namaFile = $_FILES['kk']['name'];
+        $ukuranFile = $_FILES['kk']['size'];
+        $error = $_FILES['kk']['error'];
+        $tmpName = $_FILES['kk']['tmp_name'];
+    }
 
-	if($tipe == "pernyataan"){
-		$namaFile = $_FILES['pernyataan']['name'];
-		$ukuranFile = $_FILES['pernyataan']['size'];
-		$error = $_FILES['pernyataan']['error'];
-		$tmpName = $_FILES['pernyataan']['tmp_name'];
-	}
+    if ($tipe == "akte") {
+        $namaFile = $_FILES['akte']['name'];
+        $ukuranFile = $_FILES['akte']['size'];
+        $error = $_FILES['akte']['error'];
+        $tmpName = $_FILES['akte']['tmp_name'];
+    }
+
+    if ($tipe == "pasporlama") {
+        $namaFile = $_FILES['pasporlama']['name'];
+        $ukuranFile = $_FILES['pasporlama']['size'];
+        $error = $_FILES['pasporlama']['error'];
+        $tmpName = $_FILES['pasporlama']['tmp_name'];
+    }
+
+    if ($tipe == "pernyataan") {
+        $namaFile = $_FILES['pernyataan']['name'];
+        $ukuranFile = $_FILES['pernyataan']['size'];
+        $error = $_FILES['pernyataan']['error'];
+        $tmpName = $_FILES['pernyataan']['tmp_name'];
+    }
 
 
 
